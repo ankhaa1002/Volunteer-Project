@@ -10,42 +10,42 @@
 <!-- END FOOTER -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
-<script src="resources/plugins/jquery-1.8.3.min.js"
+<script src="static/plugins/jquery-1.8.3.min.js"
 	type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-<script src="resources/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js"
+<script src="static/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js"
 	type="text/javascript"></script>
-<script src="resources/plugins/bootstrap/js/bootstrap.min.js"
+<script src="static/plugins/bootstrap/js/bootstrap.min.js"
 	type="text/javascript"></script>
 <!--[if lt IE 9]>
-	<script src="resources/plugins/excanvas.js"></script>
-	<script src="resources/plugins/respond.js"></script>	
+	<script src="static/plugins/excanvas.js"></script>
+	<script src="static/plugins/respond.js"></script>	
 	<![endif]-->
-<script src="resources/plugins/breakpoints/breakpoints.js"
+<script src="static/plugins/breakpoints/breakpoints.js"
 	type="text/javascript"></script>
 <!-- IMPORTANT! jquery.slimscroll.min.js depends on jquery-ui-1.10.1.custom.min.js -->
 <script
-	src="resources/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+	src="static/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
 	type="text/javascript"></script>
-<script src="resources/plugins/jquery.blockui.js" type="text/javascript"></script>
-<script src="resources/plugins/jquery.cookie.js" type="text/javascript"></script>
-<script src="resources/plugins/uniform/jquery.uniform.min.js"
+<script src="static/plugins/jquery.blockui.js" type="text/javascript"></script>
+<script src="static/plugins/jquery.cookie.js" type="text/javascript"></script>
+<script src="static/plugins/uniform/jquery.uniform.min.js"
 	type="text/javascript"></script>
 <script type="text/javascript"
-	src="resources/plugins/select2/select2.min.js"></script>
+	src="static/plugins/select2/select2.min.js"></script>
 <script type="text/javascript"
-	src="resources/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	src="static/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 	<script type="text/javascript"
-	src="resources/plugins/data-tables/jquery.dataTables.js"></script>
+	src="static/plugins/data-tables/jquery.dataTables.js"></script>
 <script type="text/javascript"
-	src="resources/plugins/data-tables/DT_bootstrap.js"></script>
+	src="static/plugins/data-tables/DT_bootstrap.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="resources/scripts/app.js"></script>
-<script src="resources/scripts/table-managed.js"></script>
-<script src="resources/scripts/table-editable.js"></script>
+<script src="static/scripts/app.js"></script>
+<script src="static/scripts/table-managed.js"></script>
+<script src="static/scripts/table-editable.js"></script>
 <script>
 	jQuery(document).ready(function() {
 		App.init();

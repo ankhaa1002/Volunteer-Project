@@ -7,13 +7,13 @@
 			<div class="container-fluid">
 				<!-- BEGIN LOGO -->
 				<a class="brand" href="/"> <img
-					src="resources/img/logo.png" alt="logo" />
+					src="static/img/logo.png" alt="logo" />
 				</a>
 				<!-- END LOGO -->
 				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
 				<a href="javascript:;" class="btn-navbar collapsed"
 					data-toggle="collapse" data-target=".nav-collapse"> <img
-					src="resources/img/menu-toggler.png" alt="" />
+					src="static/img/menu-toggler.png" alt="" />
 				</a>
 				<!-- END RESPONSIVE MENU TOGGLER -->
 				<!-- BEGIN TOP NAVIGATION MENU -->
@@ -21,7 +21,7 @@
 					<!-- BEGIN USER LOGIN DROPDOWN -->
 					<li class="dropdown user"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown"> <img alt=""
-							src="resources/img/avatar1_small.jpg" /> <span class="username">Bob
+							src="static/img/avatar1_small.jpg" /> <span class="username">Bob
 								Nilson</span> <i class="icon-angle-down"></i>
 					</a>
 						<ul class="dropdown-menu">
