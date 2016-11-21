@@ -24,8 +24,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="static/plugins/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css" />
-<link
-	href="static/plugins/bootstrap/css/bootstrap-responsive.min.css"
+<link href="static/plugins/bootstrap/css/bootstrap-responsive.min.css"
 	rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css"
 	href="static/plugins/select2/select2_metro.css" />
@@ -41,6 +40,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 	rel="stylesheet" type="text/css" />
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
+<link href="static/css/pages/profile.css" rel="stylesheet"
+	type="text/css" />
+
 <link href="static/plugins/gritter/css/jquery.gritter.css"
 	rel="stylesheet" type="text/css" />
 <link
