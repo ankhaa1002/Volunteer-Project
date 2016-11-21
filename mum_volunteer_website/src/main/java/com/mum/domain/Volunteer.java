@@ -11,10 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import com.mum.admin.User;
 
 @Entity
 public class Volunteer {
@@ -33,20 +32,16 @@ public class Volunteer {
 	@Column
 	private Date DOB;
 	
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	@JoinColumn(name="user_id")
+	@OneToOne
+	@JoinColumn
 	private User user;
+	
 	@Embedded
 	private Address address;
+	
 	@Column
 	private String email;
+	
 	@OneToMany(mappedBy = "volunteer")
 	private List<Task> volunteerTask;
 
@@ -116,5 +111,12 @@ public class Volunteer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public User getUser() {
+		return user;
+	}
 
+	public void setUser(User user) {
+		this.user = user;
+	}
 }

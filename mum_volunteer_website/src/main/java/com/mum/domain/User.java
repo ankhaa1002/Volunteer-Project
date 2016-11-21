@@ -1,12 +1,10 @@
-package com.mum.admin;
+package com.mum.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-
-import com.mum.domain.Volunteer;
 
 @Entity
 public class User {
