@@ -8,10 +8,13 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.mum.admin.User;
 
 @Entity
 public class Volunteer {
@@ -29,6 +32,17 @@ public class Volunteer {
 	@Temporal(TemporalType.DATE)
 	@Column
 	private Date DOB;
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@JoinColumn(name="user_id")
+	private User user;
 	@Embedded
 	private Address address;
 	@Column
