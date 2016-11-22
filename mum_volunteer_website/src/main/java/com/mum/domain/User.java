@@ -39,7 +39,7 @@ public class User {
 	public String getUserType() {
 		return userType;
 	}
-	User(){
+	public User(){
 		
 	}
 

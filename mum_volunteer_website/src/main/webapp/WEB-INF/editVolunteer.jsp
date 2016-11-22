@@ -60,7 +60,7 @@
 				<!-- END PAGE HEADER-->
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row-fluid">
-					<div class="span14">
+					<div class="span12">
 						<div class="tabbable tabbable-custom boxless">
 
 							<div class="tab-content">
@@ -80,15 +80,15 @@
 										<div class="portlet-body form">
 											<!-- BEGIN FORM-->
 											<form:form method="post" modelAttribute="volunteer"
-												action="saveVolunteer" class="horizontal-form">
+												action="editSaveVolunteer" class="horizontal-form">
 												<fieldset>
-
-													<legend>Volunteer Info</legend>
-													<div class="row-fluid">
+												<legend>Volunteer Info</legend>
+                                                 <div class="row-fluid">
 														<div class="span6 ">
 															<div class="control-group">
 																<label class="control-label" for="username">User Name</label>
 																<div class="controls">
+																    <form:hidden path="id" />
 																	<form:input type="text" path="userName"
 																		class="m-wrap span12" placeholder="User Name" />
 																	<form:errors path="userName" />
@@ -109,6 +109,7 @@
 														</div>
 														<!--/span-->
 													</div>
+													
 													<div class="row-fluid">
 														<div class="span6 ">
 															<div class="control-group">
@@ -164,12 +165,13 @@
 															<div class="control-group">
 																<label class="control-label">Phone Number</label>
 																<div class="controls">
-																	<form:input id="phone" path="telNumber" type="text"
-																		class="m-wrap span12" placeholder="123-456-7891" />
+																	<form:input id="telNumber" path="telNumber" type="text"
+																		class="m-wrap span12" placeholder="Telephone Number" />
 																</div>
 															</div>
 														</div>
 														<!--/span-->
+														
 														<div class="span6 ">
 															<div class="control-group">
 																<label class="control-label">Email</label>
@@ -209,7 +211,7 @@
 																<label class="control-label">ZipCode</label>
 																<div class="controls">
 																	<form:input id="state" path="zipcode" type="text"
-																		class="m-wrap span12" placeholder="12345" />
+																		class="m-wrap span12" placeholder="ZipCode" />
 																</div>
 															</div>
 														</div>
@@ -239,7 +241,7 @@
 																</div>
 															</div>
 														</div>
-                                                       </div>
+                                                   </div>
 													
 													<!--/row-->
 												</fieldset>

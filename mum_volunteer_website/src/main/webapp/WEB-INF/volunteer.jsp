@@ -9,7 +9,7 @@
 	<jsp:include page="fragments/header.jsp" />
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container row-fluid">
-		<jsp:include page="fragments/sidebar.jsp" />
+		<jsp:include page="fragments/volunteer_sidebar1.jsp" />
 		<!-- BEGIN PAGE -->
 		<div class="page-content">
 			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
@@ -56,7 +56,6 @@
 						<ul class="breadcrumb">
 							<li><i class="icon-home"></i> <a href="/project">Home</a> <i
 								class="icon-angle-right"></i></li>
-							</li>
 							<li><a href="#">${title}</a></li>
 						</ul>
 						<!-- END PAGE TITLE & BREADCRUMB-->
@@ -64,6 +63,33 @@
 				</div>
 				<!-- END PAGE HEADER-->
 				<!-- BEGIN PAGE CONTENT-->
+						<c:if test="${param.delete eq true}">
+					<div class="portlet">
+						<div class="alert alert-success">
+							<button class="close" data-dismiss="alert"></button>
+							<strong>Success!</strong> Volunteer has been successfully deleted
+						</div>
+					</div>
+				</c:if>
+
+				<c:if test="${param.create eq true}">
+					<div class="portlet">
+						<div class="alert alert-success">
+							<button class="close" data-dismiss="alert"></button>
+							<strong>Success!</strong> Volunteer has been successfully created
+						</div>
+					</div>
+				</c:if>
+
+				<c:if test="${param.update eq true}">
+					<div class="portlet">
+						<div class="alert alert-success">
+							<button class="close" data-dismiss="alert"></button>
+							<strong>Success!</strong> Volunteer has been successfully updated
+						</div>
+					</div>
+				</c:if>
+				
 				<div class="row-fluid">
 					<div class="span12">
 						<!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -79,53 +105,55 @@
 										href="javascript:;" class="remove"></a>
 								</div>
 							</div>
-							<div class="portlet-body">
-								<div class="clearfix">
-									<div class="btn-group">
-										<a href="addVolunteer" id="sample_editable_1_new" class="btn green">
-											Add New <i class="icon-plus"></i>
-										</a>
+								<form method="post" action="volunteerDelete">
+								<div class="portlet-body">
+									<div class="clearfix">
+										<div class="btn-group">
+											<a href="volunteerAdd" class="btn green"> Add New <i
+												class="icon-plus"></i></a>
+										</div>
+										<div class="btn-group">
+											<a id="editVolunteer" href="editVoluteer-" class="btn blue"> Edit <i
+												class="icon-pencil"></i></a>
+										</div>
+										<div class="btn-group">
+											<a><button type="submit" class="btn red">
+												Delete <i class="icon-minus"></i></button></a>
+										</div>
 									</div>
-									<div class="btn-group pull-right">
-										<button class="btn dropdown-toggle" data-toggle="dropdown">
-											Tools <i class="icon-angle-down"></i>
-										</button>
-										<ul class="dropdown-menu">
-											<li><a href="#">Print</a></li>
-											<li><a href="#">Save as PDF</a></li>
-											<li><a href="#">Export to Excel</a></li>
-										</ul>
-									</div>
-								</div>
-								<table class="table table-striped table-bordered table-hover"
-									id="sample_1">
-									<thead>
-										<tr>
-											<th style="width: 8px;"><input type="checkbox"
-												class="group-checkable" data-set="#sample_1 .checkboxes" /></th>
-											<th class="hidden-480">FirstName</th>
-											<th class="hidden-480">MiddleName</th>
-											<th class="hidden-480">LastName</th>
-											<th class="hidden-480">Telephone Number</th>
-											<th class="hidden-480">Date Of Birth</th>
-											<th class="hidden-480">Email</th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach var="volunteer" items="${volunteers}">
-											<tr class="odd gradeX">
-												<td><input type="checkbox" class="checkboxes" value="1" /></td>
-												<td>${volunteer.firstName}</td>
-												<td class="hidden-480">${volunteer.middleName}</td>
-												<td class="hidden-480">${volunteer.lastName}</td>
-												<td class="center hidden-480">${volunteer.telNumber}</td>
-												<td class="hidden-480">${volunteer.DOB}</td>
-												<td class="hidden-480">${volunteer.email}</td>
+									<table class="table table-striped table-bordered table-hover"
+										id="sample_1">
+										<thead>
+											<tr>
+												<th style="width: 8px;"><input type="checkbox"
+													class="group-checkable"
+													data-set="#sample_1 .checkboxes" /></th>
+												<th>First Name</th>
+												<th class="hidden-480">Middle Name</th>
+												<th class="hidden-480">Last Name</th>
+												<th class="hidden-480">Telephone Number</th>
+												<th class="hidden-480">Date Of Birth</th>
+												<th class="hidden-480">Email</th>
 											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
+										</thead>
+										<tbody id="needCheck">
+											<c:forEach var="volunteer" items="${volunteers}">
+												<tr class="odd gradeX" >
+													<td><input type="checkbox" value="${volunteer.userId}"
+														name="volunteerId" /></td>
+													<td><a							
+														href="<c:url value='/editVolunteer-${volunteer.userId}' />">${volunteer.firstName}</a></td>
+													<td class="hidden-480">${volunteer.middleName}</td>
+													<td class="hidden-480">${volunteer.lastName}</td>
+													<td class="center hidden-480">${volunteer.telNumber}</td>
+													<td class="hidden-480">${volunteer.DOB}</td>
+													<td class="hidden-480">${volunteer.email}</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
+							</form>
 						</div>
 						<!-- END EXAMPLE TABLE PORTLET-->
 					</div>

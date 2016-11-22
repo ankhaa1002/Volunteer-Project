@@ -22,23 +22,19 @@ public class VolunteerService {
 	}
 
 	public Volunteer getVolunteer(int id) {
-		if (volunteerRepository.findOne(id) != null) {
+		
 			return volunteerRepository.findOne(id);
-		} else {
-			return null;
-		}
+		
 	}
 
 	public void updateVolunteer(Volunteer volunteer) {
 		volunteerRepository.save(volunteer);
 	}
 
-	public void deleteVolunteer(int id) {
-		if (volunteerRepository.exists(id)) {
-			volunteerRepository.delete(id);
-		} else {
-			System.out.println("User does not exist!");
-		}
+	public void deleteVolunteer(Volunteer volunteer) {
+		
+			volunteerRepository.delete(volunteer);
+		
 	}
 
 	public List<Volunteer> findAllVolunteers() {

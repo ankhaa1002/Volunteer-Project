@@ -4,10 +4,17 @@ import java.util.Date;
 import java.util.List;
 
 import com.mum.domain.Address;
+import com.mum.domain.Skill;
 import com.mum.domain.Task;
 
 public class VolunteerForm {
-
+	
+	private int id;
+	
+    private String userName;
+	
+	private String passWord;
+	
 	private String firstName;
 
 	private String middleName;
@@ -23,6 +30,62 @@ public class VolunteerForm {
 	private String email;
 
 	private List<Task> volunteerTask;
+	
+	private String state;
+	
+	private String city;
+	
+	private int zipcode;
+	
+	private String description;
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public int getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(int zipcode) {
+		this.zipcode = zipcode;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -83,9 +146,29 @@ public class VolunteerForm {
 	public List<Task> getVolunteerTask() {
 		return volunteerTask;
 	}
+	
+	public List<Skill> skills;
+
+	public List<Skill> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
+	}
 
 	public void setVolunteerTask(List<Task> volunteerTask) {
 		this.volunteerTask = volunteerTask;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 
 }
