@@ -1,7 +1,5 @@
 package com.mum.controller;
 
-
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.mum.domain.Address;
+import com.mum.domain.User;
 import com.mum.domain.Volunteer;
 import com.mum.pojo.VolunteerForm;
 import com.mum.service.SkillService;
@@ -26,15 +27,13 @@ public class VolunteerController {
 
 	@Autowired
 	SkillService skillService;
-   
+
 	@RequestMapping("/login")
 	public String logIn(Model model) {
 		model.addAttribute("tittle", "Login");
 		return "login";
 	}
-	
-	
-	
+
 	@RequestMapping("/volunteer")
 	public String listVolunteer(Model model) {
 		model.addAttribute("title", "Volunteer list");
@@ -50,7 +49,7 @@ public class VolunteerController {
 		model.addAttribute("volunteer", volunteer);
 		return "addVolunteer";
 	}
-	
+
 	@RequestMapping(value = "/saveVolunteer", method = RequestMethod.POST)
 	public String saveVolunteer(@ModelAttribute("volunteer") VolunteerForm volunteer, BindingResult result,
 			Model model) {
@@ -58,10 +57,21 @@ public class VolunteerController {
 		entity.setFirstName(volunteer.getFirstName());
 		entity.setMiddleName(volunteer.getMiddleName());
 		entity.setLastName(volunteer.getLastName());
-		entity.setTelNumber(volunteer.getTelNumber());
 		entity.setDOB(volunteer.getDOB());
+		entity.setTelNumber(volunteer.getTelNumber());
+		
 		entity.setEmail(volunteer.getEmail());
+		entity.setDiscription(volunteer.getDescription());
+		Address address = new Address();
+		address.setState(volunteer.getState());
+		address.setCity(volunteer.getCity());
+		address.setZipcode(volunteer.getZipcode());
+		entity.setAddress(address);
 
+		User user = new User();
+		user.setUserName(volunteer.getUserName());
+		user.setPassWord(volunteer.getPassWord());
+		entity.setUser(user);
 		service.saveVolunteer(entity);
 		model.addAttribute("msg", "Volunteer has been successfully added!");
 
@@ -70,8 +80,11 @@ public class VolunteerController {
 
 	@RequestMapping(value = { "editVolunteer-{id}" }, method = RequestMethod.GET)
 	public String editVolunteer(@PathVariable int id, Model model) {
+		//User user = new User();
 		Volunteer volunteer = service.getVolunteer(id);
+		
 		VolunteerForm volunteerForm = new VolunteerForm();
+		
 		volunteerForm.setId(volunteer.getUserId());
 		volunteerForm.setFirstName(volunteer.getFirstName());
 		volunteerForm.setMiddleName(volunteer.getMiddleName());
@@ -79,6 +92,11 @@ public class VolunteerController {
 		volunteerForm.setDOB(volunteer.getDOB());
 		volunteerForm.setTelNumber(volunteer.getTelNumber());
 		volunteerForm.setEmail(volunteer.getEmail());
+		
+		volunteerForm.setState(volunteer.getAddress().getState());
+		volunteerForm.setCity(volunteer.getAddress().getCity());
+		volunteerForm.setZipcode(volunteer.getAddress().getZipcode());
+		volunteerForm.setDescription(volunteer.getDiscription());
 		volunteerForm.setSkills(skillService.findAllSkills());
 		model.addAttribute("title", "Editing " + volunteer.getFirstName());
 		model.addAttribute("volunteer", volunteerForm);
@@ -88,31 +106,39 @@ public class VolunteerController {
 	@RequestMapping(value = { "editSaveVolunteer" }, method = RequestMethod.POST)
 	public String editSave(@ModelAttribute("volunteer") VolunteerForm volunteerForm, BindingResult result, Model model,
 			HttpServletRequest req) {
+
+		
 		Volunteer volunteer = service.getVolunteer(volunteerForm.getId());
+		
 		volunteer.setFirstName(volunteerForm.getFirstName());
 		volunteer.setMiddleName(volunteerForm.getMiddleName());
 		volunteer.setLastName(volunteerForm.getLastName());
 		volunteer.setDOB(volunteerForm.getDOB());
 		volunteer.setTelNumber(volunteerForm.getTelNumber());
 		volunteer.setEmail(volunteerForm.getEmail());
+		volunteer.setDiscription(volunteerForm.getDescription());
+		
+		Address address = new Address();
+		
+		address.setState(volunteerForm.getState());
+		address.setCity(volunteerForm.getCity());
+		address.setZipcode(volunteerForm.getZipcode());
 		service.saveVolunteer(volunteer);
 		return "redirect:/volunteer?update=true";
 	}
 
-	 @RequestMapping(value = "/volunteerDelete", method = RequestMethod.POST)
-	 public String deleteVolunteer(HttpServletRequest req, final
-	 RedirectAttributes redirectAttributes) {
-	 if (req.getParameterValues("volunteerId") == null)
-	 return "redirect:/volunteer?delete=false";
-	 else {
-	 for (String volunteerId : req.getParameterValues("volunteerId")) {
-	 service.deleteVolunteer(service.getVolunteer(Integer.parseInt(volunteerId)));
-	 }
-	
-	 redirectAttributes.addAttribute("successMsg", "Voluntteer has been successfully deleted");
-	 
-	 return "redirect:/volunteer?delete=true";
-	 }
-	 }
+	@RequestMapping(value = "/volunteerDelete", method = RequestMethod.POST)
+	public String deleteVolunteer(HttpServletRequest req, final RedirectAttributes redirectAttributes) {
+		if (req.getParameterValues("volunteerId") == null)
+			return "redirect:/volunteer?delete=false";
+		else {
+			for (String volunteerId : req.getParameterValues("volunteerId")) {
+				service.deleteVolunteer(service.getVolunteer(Integer.parseInt(volunteerId)));
+			}
+
+			redirectAttributes.addAttribute("successMsg", "Voluntteer has been successfully deleted");
+
+			return "redirect:/volunteer?delete=true";
+		}
+	}
 }
-	

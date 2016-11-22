@@ -164,8 +164,8 @@
 															<div class="control-group">
 																<label class="control-label">Phone Number</label>
 																<div class="controls">
-																	<form:input id="telNumber" path="telNumber" type="text"
-																		class="m-wrap span12" placeholder="Telephone Number" />
+																	<form:input id="phone" path="telNumber" type="text"
+																		class="m-wrap span12" placeholder="123-456-7891" />
 																</div>
 															</div>
 														</div>
@@ -209,7 +209,7 @@
 																<label class="control-label">ZipCode</label>
 																<div class="controls">
 																	<form:input id="state" path="zipcode" type="text"
-																		class="m-wrap span12" placeholder="ZipCode" />
+																		class="m-wrap span12" placeholder="12345" />
 																</div>
 															</div>
 														</div>

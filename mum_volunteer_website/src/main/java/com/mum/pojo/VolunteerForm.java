@@ -35,7 +35,7 @@ public class VolunteerForm {
 	
 	private String city;
 	
-	private String zipcode;
+	private int zipcode;
 	
 	private String description;
 
@@ -55,11 +55,11 @@ public class VolunteerForm {
 		this.city = city;
 	}
 
-	public String getZipcode() {
+	public int getZipcode() {
 		return zipcode;
 	}
 
-	public void setZipcode(String zipcode) {
+	public void setZipcode(int zipcode) {
 		this.zipcode = zipcode;
 	}
 

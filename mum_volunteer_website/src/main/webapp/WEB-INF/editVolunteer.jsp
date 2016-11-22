@@ -82,11 +82,13 @@
 											<form:form method="post" modelAttribute="volunteer"
 												action="editSaveVolunteer" class="horizontal-form">
 												<fieldset>
+												<legend>Volunteer Info</legend>
                                                  <div class="row-fluid">
 														<div class="span6 ">
 															<div class="control-group">
 																<label class="control-label" for="username">User Name</label>
 																<div class="controls">
+																    <form:hidden path="id" />
 																	<form:input type="text" path="userName"
 																		class="m-wrap span12" placeholder="User Name" />
 																	<form:errors path="userName" />
@@ -107,7 +109,7 @@
 														</div>
 														<!--/span-->
 													</div>
-													<legend>Volunteer Info</legend>
+													
 													<div class="row-fluid">
 														<div class="span6 ">
 															<div class="control-group">
@@ -150,7 +152,7 @@
 																<label class="control-label" for="middlename">Date Of Birth
 																	</label>
 																<div class="controls">
-																	<form:input type="text" path="DOB"
+																	<form:input id="dob" type="text" path="DOB"
 																		class="m-wrap span12" placeholder="dd/mm/yyyy"/>
 																	<form:errors path="DOB"/>
 																</div>

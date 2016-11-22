@@ -63,6 +63,7 @@
 	$('#dob').datepicker({
 		format : 'dd/mm/yyyy'
 	});
+	 $('#phone').mask('(00) 0000-0000');
 
 	$("#edit").click(function() {
 		var selected = [];

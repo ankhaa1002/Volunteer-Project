@@ -3,6 +3,7 @@ package com.mum.domain;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -32,7 +33,7 @@ public class Volunteer {
 	@Column
 	private Date DOB;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn
 	private User user;
 	
@@ -44,6 +45,25 @@ public class Volunteer {
 	
 	@OneToMany(mappedBy = "volunteer")
 	private List<Task> volunteerTask;
+    
+	@Column
+	private String discription;
+	
+	public List<Task> getVolunteerTask() {
+		return volunteerTask;
+	}
+
+	public void setVolunteerTask(List<Task> volunteerTask) {
+		this.volunteerTask = volunteerTask;
+	}
+
+	public String getDiscription() {
+		return discription;
+	}
+
+	public void setDiscription(String discription) {
+		this.discription = discription;
+	}
 
 	public Volunteer() {
 	}
