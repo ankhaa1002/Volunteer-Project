@@ -60,7 +60,7 @@
 				<!-- END PAGE HEADER-->
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row-fluid">
-					<div class="span14">
+					<div class="span12">
 						<div class="tabbable tabbable-custom boxless">
 
 							<div class="tab-content">
@@ -80,11 +80,9 @@
 										<div class="portlet-body form">
 											<!-- BEGIN FORM-->
 											<form:form method="post" modelAttribute="volunteer"
-												action="saveVolunteer" class="horizontal-form">
+												action="editSaveVolunteer" class="horizontal-form">
 												<fieldset>
-
-													<legend>Volunteer Info</legend>
-													<div class="row-fluid">
+                                                 <div class="row-fluid">
 														<div class="span6 ">
 															<div class="control-group">
 																<label class="control-label" for="username">User Name</label>
@@ -109,6 +107,7 @@
 														</div>
 														<!--/span-->
 													</div>
+													<legend>Volunteer Info</legend>
 													<div class="row-fluid">
 														<div class="span6 ">
 															<div class="control-group">
@@ -151,7 +150,7 @@
 																<label class="control-label" for="middlename">Date Of Birth
 																	</label>
 																<div class="controls">
-																	<form:input id="dob" type="text" path="DOB"
+																	<form:input type="text" path="DOB"
 																		class="m-wrap span12" placeholder="dd/mm/yyyy"/>
 																	<form:errors path="DOB"/>
 																</div>
@@ -170,6 +169,7 @@
 															</div>
 														</div>
 														<!--/span-->
+														
 														<div class="span6 ">
 															<div class="control-group">
 																<label class="control-label">Email</label>
@@ -239,7 +239,7 @@
 																</div>
 															</div>
 														</div>
-                                                       </div>
+                                                   </div>
 													
 													<!--/row-->
 												</fieldset>

@@ -60,6 +60,9 @@
 	$('#end_date').datepicker({
 		format : 'dd/mm/yyyy'
 	});
+	$('#dob').datepicker({
+		format : 'dd/mm/yyyy'
+	});
 
 	$("#edit").click(function() {
 		var selected = [];
@@ -75,6 +78,24 @@
 			$("#edit").attr("href", "#");
 		} else {
 			$("#edit").attr("href", "editProject-" + selected[0]);
+		}
+
+	});
+	
+	$("#editVolunteer").click(function() {
+		var selected = [];
+
+		$('#needCheck input:checked').each(function() {
+			selected.push($(this).attr('value'));
+		});
+
+		if (selected.length > 1)
+			alert('Multi selection forbidden on edit!');
+		else if (selected.length == 0) {
+			alert('You must select one volunteer');
+			$("#edit").attr("href", "#");
+		} else {
+			$("#editVolunteer").attr("href", "editVolunteer-" + selected[0]);
 		}
 
 	});
