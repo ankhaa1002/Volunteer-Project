@@ -35,6 +35,8 @@
 <bean id="mailService" class="com.mum.config.MailService">
 	<property name="mailSender" ref="mailSender" />
 </bean>
+
+
 	
 
 </beans>

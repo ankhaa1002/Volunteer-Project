@@ -2,19 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<!-- 
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 2.3.1
-Version: 1.2
-Author: KeenThemes
-Website: http://www.keenthemes.com/preview/?theme=metronic
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469
--->
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!-->
+
 <html lang="en">
-<!--<![endif]-->
-<!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8" />
 <title>${title}</title>

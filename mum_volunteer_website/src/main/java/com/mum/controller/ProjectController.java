@@ -10,6 +10,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,19 +21,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mum.domain.Project;
 import com.mum.domain.Skill;
 import com.mum.domain.Task;
+import com.mum.domain.User;
 import com.mum.domain.enums.Status;
 import com.mum.pojo.ProjectForm;
+import com.mum.service.AdministratorService;
 import com.mum.service.ProjectService;
 import com.mum.service.SkillService;
 import com.mum.service.TaskService;
-
-import scala.annotation.meta.setter;
+import com.mum.service.UserService;
 
 @Controller
 public class ProjectController {
@@ -42,6 +47,8 @@ public class ProjectController {
 
 	@Autowired
 	TaskService taskService;
+	@Autowired
+	UserService userService;
 
 	@RequestMapping("/project")
 	public String index(Model model) {
@@ -49,6 +56,52 @@ public class ProjectController {
 		model.addAttribute("projects", service.findAllProjects());
 		return "project";
 	}
+	
+	@RequestMapping("/register")
+	public String userForm(Model model) {
+		model.addAttribute("title", "Register User");
+		return "register";
+	}
+	
+	@RequestMapping(value="/addUser", method = RequestMethod.POST)
+	public String userRegister(Model model,HttpServletRequest req,final RedirectAttributes redirectAttributes) {
+		System.out.println("adding User");
+		String uname=req.getParameter("username");
+		String  upassword=req.getParameter("password");
+		String reupassword=req.getParameter("rpassword");
+		String email=req.getParameter("email");
+		
+		User user = new User(uname,upassword,"VOLUNTEER",email);
+		
+		if(upassword.equals(reupassword)){
+		userService.saveUser(user);
+
+		redirectAttributes.addAttribute("successMsg", "User has been successfully registered");
+		}else{
+			return "redirect:/register?create=false";
+		}
+			
+		return "redirect:/login?create=true";
+	}
+	
+	
+	@RequestMapping("/403")
+	public String error(ModelAndView model) {
+		
+		//check if user is login
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			UserDetails userDetail = (UserDetails) auth.getPrincipal();
+			System.out.println(userDetail);
+		
+			model.addObject("username", userDetail.getUsername());
+			
+		}
+		
+		model.setViewName("403");
+		return "403";
+	}
+
 
 	@RequestMapping("/projectAdd")
 	public String addProject(Model model) {

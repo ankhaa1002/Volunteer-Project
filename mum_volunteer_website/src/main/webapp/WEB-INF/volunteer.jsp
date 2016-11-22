@@ -4,6 +4,8 @@
 <jsp:include page="fragments/head.jsp" />
 <!-- BEGIN BODY -->
 <body class="fixed-top">
+
+
 	<jsp:include page="fragments/header.jsp" />
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container row-fluid">

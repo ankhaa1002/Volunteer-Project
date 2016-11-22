@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+    
+	<%-- <security:authorize access="hasRole('ADMIN')"> --%>
 <!-- BEGIN HEADER -->
 	<div class="header navbar navbar-inverse navbar-fixed-top">
 		<!-- BEGIN TOP NAVIGATION BAR -->
@@ -20,21 +25,17 @@
 				<ul class="nav pull-right">
 					<!-- BEGIN USER LOGIN DROPDOWN -->
 					<li class="dropdown user"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown"> <img alt=""
-							src="static/img/avatar1_small.jpg" /> <span class="username">Bob
-								Nilson</span> <i class="icon-angle-down"></i>
+						data-toggle="dropdown"> <span class="username"> ${pageContext.request.userPrincipal.name}</span> <i class="icon-angle-down"></i>
 					</a>
 						<ul class="dropdown-menu">
 							<li><a href="extra_profile.html"><i class="icon-user"></i>
 									My Profile</a></li>
-							<li><a href="calendar.html"><i class="icon-calendar"></i>
-									My Calendar</a></li>
-							<li><a href="inbox.html"><i class="icon-envelope"></i>
-									My Inbox(3)</a></li>
-							<li><a href="#"><i class="icon-tasks"></i> My Tasks</a></li>
+								<li><a href="#"><i class="icon-tasks"></i> My Tasks</a></li>
 							<li class="divider"></li>
-							<li><a href="login.html"><i class="icon-key"></i> Log
+							<li>
+							<a href="<c:url value="/logout" />"><i class="icon-key"></i> Log
 									Out</a></li>
+									
 						</ul></li>
 					<!-- END USER LOGIN DROPDOWN -->
 				</ul>

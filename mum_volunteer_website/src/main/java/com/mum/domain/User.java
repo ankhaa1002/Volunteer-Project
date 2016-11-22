@@ -18,6 +18,15 @@ public class User {
 	@Column
 	private String userType;
 	
+	@Column
+	private String email;
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	@OneToOne(mappedBy="user")
 	private Volunteer volunteer;
 
@@ -34,6 +43,13 @@ public class User {
 		
 	}
 
+	public User(String userName, String passWord, String userType,String email) {
+		super();
+		this.userName = userName;
+		this.passWord = passWord;
+		this.userType = userType;
+		this.email=email;
+	}
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
@@ -53,5 +69,11 @@ public class User {
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userName=" + userName + ", passWord=" + passWord + ", userType=" + userType
+				+ ", volunteer=" + volunteer + "]";
+	}
+	
 
 }
